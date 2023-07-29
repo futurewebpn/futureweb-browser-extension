@@ -1,7 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
 import browser from "webextension-polyfill"
-import logoUrl from "images/moco-159x159.png"
+import logoUrl from "images/fw-159x159.png"
 import { mocoHost, mocoProtocol } from "utils"
 
 const Header = ({ subdomain }) => (

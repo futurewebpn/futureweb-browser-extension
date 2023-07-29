@@ -1,24 +1,27 @@
 {
-  "name": "MOCO Zeiterfassung",
-  "short_name": "MOCO",
-  "description": "MOCO Zeiterfassung Plugin",
+  "name": "Futureweb - Browsererweiterung",
+  "short_name": "Futureweb",
+  "description": "Futureweb Browsererweiterung",
   "manifest_version": 3,
   "icons": {
-    "16": "src/images/moco-32x32.png",
-    "32": "src/images/moco-32x32.png",
-    "48": "src/images/moco-159x159.png",
-    "128": "src/images/moco-159x159.png"
+    "16": "src/images/fw-32x32.png",
+    "32": "src/images/fw-32x32.png",
+    "48": "src/images/fw-159x159.png",
+    "128": "src/images/fw-159x159.png"
   },
   "options_ui": {
     "page": "options.html"
   },
   "permissions": ["storage", "tabs"],
-  "host_permissions": ["https://*.mocoapp.com/*"],
+  "host_permissions": [
+    "https://*.mocoapp.com/*",
+    "https://*.fweb.at/*"
+  ],
   "background": {
     "service_worker": "background.[version].js"
   },
   "action": {
-    "default_icon": "src/images/moco-32x32.png"
+    "default_icon": "src/images/fw-32x32.png"
   },
   "content_scripts": [
     {

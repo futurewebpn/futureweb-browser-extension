@@ -12,6 +12,7 @@ export default class Client {
 
   constructor({ subdomain, apiKey, version }) {
     this.#apiKey = apiKey
+    const mocoversion = version.split('.').pop().split('').join('.')
     this.#client = axios.create({
       adapter: fetchAdapter,
       responseType: "json",
@@ -19,7 +20,7 @@ export default class Client {
       headers: {
         common: {
           "x-api-key": apiKey,
-          "x-extension-version": version,
+          "x-extension-version": mocoversion,
         },
       },
     })
