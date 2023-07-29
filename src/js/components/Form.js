@@ -1,7 +1,7 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
 import Select from "components/Select"
-import { formatDate } from "utils"
+import { formatAvailHours, formatDate } from "utils"
 import cn from "classnames"
 import StopWatch from "components/shared/StopWatch"
 
@@ -79,6 +79,8 @@ class Form extends Component {
   render() {
     const { projects, changeset, errors, onChange, onSubmit } = this.props
     const project = Select.findOptionByValue(projects, changeset.assignment_id)
+    let availhours = changeset.availhours
+    let formattedAvailHours = formatAvailHours(availhours)
 
     return (
       <form onSubmit={onSubmit}>
@@ -122,6 +124,11 @@ class Form extends Component {
             autoFocus
           />
           {errors.hours ? <div className="form-error">{errors.hours.join("; ")}</div> : null}
+          <span
+            className={`moco-bx-availhours ${availhours === null ? '' : (availhours > 0 ? 'positive' : 'negative')}`}
+          >
+            {formattedAvailHours}
+          </span>
         </div>
         <div className={cn("form-group", { "has-error": errors.description })}>
           <textarea

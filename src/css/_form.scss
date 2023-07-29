@@ -79,6 +79,19 @@ input {
   margin-top: 3px;
 }
 
+.moco-bx-availhours {
+  margin-left: 10px;
+  font-weight: unset !important;
+}
+.moco-bx-availhours.positive {
+  color: green;
+}
+.moco-bx-availhours.negative {
+  color: red;
+  background-color: yellow;
+}
+
+
 input[name="hours"] {
   width: 48px;
   outline: 0 !important;

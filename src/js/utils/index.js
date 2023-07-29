@@ -118,6 +118,22 @@ export const formatDuration = (
   }
 }
 
+export const formatAvailHours = (val) => {
+  if (val === null) {
+    return "Kein Wartungsvertrag!";
+  }
+  const availHours = parseFloat(val);
+  const availHoursformatted = availHours.toFixed(2).replace(".", ",") + "h"
+  let msg
+  if (availHours > 0) {
+    msg = "Verfügbar: " + availHoursformatted
+  } else {
+    msg = "Überschritten: " + availHoursformatted
+  }
+  return msg
+}
+
+
 export const projectRegex = /\[([\w/-]+)\]/
 
 export const projectIdentifierBySelector =

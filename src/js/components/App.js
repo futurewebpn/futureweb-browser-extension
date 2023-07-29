@@ -30,6 +30,7 @@ import Header from "./shared/Header"
 import { head } from "lodash"
 import TimeInputParser from "utils/TimeInputParser"
 import { get } from "lodash/fp"
+import { getAvailHours } from "../utils/messageHandlers"
 
 @observer
 class App extends Component {
@@ -60,6 +61,16 @@ class App extends Component {
     )
   }
 
+  @computed get availHours() {
+    const { availHours } = this.state
+    const HoursRemaining = availHours.tasks.find(task => task.task_id === this.task.value)?.budget_remaining_in_hours
+    if (HoursRemaining) {
+      return parseFloat(HoursRemaining)
+    } else {
+      return null //"Kein Wartungsvertrag!"
+    }
+  }
+
   @computed get task() {
     const { service, serviceLastTaskId, userLastTaskId } = this.state
     return (
@@ -88,8 +99,8 @@ class App extends Component {
       seconds: new TimeInputParser(this.changeset.hours).parseSeconds(),
       description: service?.description || "",
       tag: "",
+      availhours: this.availHours,
     }
-
     return { ...defaults, ...this.changeset }
   }
 
@@ -118,6 +129,18 @@ class App extends Component {
     if (name === "assignment_id") {
       const project = findProjectByValue(value)(projects)
       this.changeset.task_id = defaultTask(project?.tasks)?.value
+    }
+
+    if (name === "assignment_id" || name === "task_id") {
+      getAvailHours(this.project.value, this.task.value)
+        .then((res) => {
+          this.changeset.availhours = res.availHoursval
+          this.state.availHours = res.response.data
+        })
+        .catch((error) => {
+          // Handle any errors
+          console.log("Error when assigning hours!")
+        });
     }
   }
 

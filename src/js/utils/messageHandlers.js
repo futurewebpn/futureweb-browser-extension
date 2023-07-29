@@ -98,6 +98,7 @@ export async function openPopup(tab, { service }) {
           apiClient.projects(),
           apiClient.activities(fromDate, toDate),
           apiClient.schedules(fromDate, toDate),
+          apiClient.availhours(get("[0].data.user_last_project_id", responses) || get("[0].data.user_last_project_id", responses))
         ])),
       )
     }
@@ -117,6 +118,7 @@ export async function openPopup(tab, { service }) {
       projects: groupedProjectOptions(get("[1].data.projects", responses)),
       activities: get("[2].data", responses),
       schedules: get("[3].data", responses),
+      availHours: get("[4].data", responses),
       fromDate,
       toDate,
       loading: false,
@@ -133,5 +135,26 @@ export async function openPopup(tab, { service }) {
       errorMessage = error.message
     }
     sendMessage("openPopup", { errorType, errorMessage }, `content-script@${tab.id}`)
+  }
+}
+
+
+export async function getAvailHours(project_id, task_id) {
+  try {
+    const settings = await getSettings();
+    const apiClient = new ApiClient(settings);
+    const response = await apiClient.availhours(project_id);
+    let availHoursval
+    const HoursRemaining = response.data.tasks.find((task) => task.task_id === task_id)?.budget_remaining_in_hours;
+    if (HoursRemaining) {
+      availHoursval = parseFloat(HoursRemaining)
+    } else {
+      availHoursval = null //"Kein Wartungsvertrag!"
+    }
+    return { availHoursval, response}
+  } catch (error) {
+    if (error.response?.status === 422) {
+      sendMessage("setFormErrors", error.response.data, `popup@${tab.id}`);
+    }
   }
 }

@@ -83,12 +83,13 @@ export default {
       projectId: "projectKey",
     },
     description: (document, service, { id }) => {
-      const title =
-        document
-          .querySelector('[data-test-id="issue.views.issue-base.foundation.summary.heading"]')
-          ?.textContent?.trim() ||
-        document.querySelector(".ghx-selected .ghx-summary")?.textContent?.trim()
-      return `#${id} ${title || ""}`
+      // const title =
+      //   document
+      //     .querySelector('[data-test-id="issue.views.issue-base.foundation.summary.heading"]')
+      //     ?.textContent?.trim() ||
+      //   document.querySelector(".ghx-selected .ghx-summary")?.textContent?.trim()
+      //return `#${id} ${title || ""}`
+      return `#${id} `
     },
     projectId: (document, service, { projectId }) =>
       projectIdentifierBySelector(

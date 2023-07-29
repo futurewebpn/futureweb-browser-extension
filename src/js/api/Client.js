@@ -34,6 +34,9 @@ export default class Client {
 
   projects = () => this.#client.get("projects")
 
+  availhours = (project_id) => this.#client.get("projects/"+project_id+"/budget")
+
+
   schedules = (fromDate, toDate) =>
     this.#client.get("schedules", {
       params: { date: `${formatDate(fromDate)}:${formatDate(toDate)}` },
