@@ -1,6 +1,13 @@
-# MOCO Browser Extension
+# Futureweb Browser Extension
 
 ## Technical Documentation
+
+### Info Futureweb
+
+- This extension uses the upstream fork of Moco Browser Extension
+- Part of the app is modified to solve needed enhancements for Futureweb, so you should use the official Moco API
+- Article inserted from the Futureweb Article Database (calling Futureweb API)
+- Showing Available hours (calling official Moco Browser Extension API)
 
 ### Requirements for Version 2
 
