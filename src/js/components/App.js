@@ -139,7 +139,7 @@ class App extends Component {
         })
         .catch((error) => {
           // Handle any errors
-          console.log("Error when assigning hours!")
+          console.log("Error when assigning hours! Error: "+error)
         });
     }
   }
