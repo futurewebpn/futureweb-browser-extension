@@ -1,7 +1,7 @@
 {
-  "name": "Futureweb - Browsererweiterung",
+  "name": "Futureweb - Browsererweiterung V2",
   "short_name": "Futureweb",
-  "description": "Futureweb Browsererweiterung",
+  "description": "Futureweb Browsererweiterung V2",
   "manifest_version": 2,
   "icons": {
     "16": "src/images/fw-32x32.png",

@@ -1,7 +1,7 @@
 {
   "name": "futureweb-extension",
-  "description": "Browsererweiterung für Futureweb",
-  "version": "0.1.231",
+  "description": "Browsererweiterung für Futureweb V2",
+  "version": "0.2.231",
   "license": "MIT",
   "browserslist": [
     "defaults",
@@ -22,7 +22,7 @@
     "zip:firefox": "zip -qr build/firefox/moco-bx-source.zip . -x .git/\\* build/\\* node_modules/\\* test/\\* .DS_Store",
     "build:chrome": "webpack --config webpack.chrome.config.js --env browser=chrome --env NODE_ENV=production",
     "build:firefox": "webpack --config webpack.firefox.config.js --env browser=firefox --env NODE_ENV=production",
-    "build": "yarn build:firefox && yarn zip:firefox && yarn build:chrome && yarn zip:chrome",
+    "build": "yarn build:firefox && yarn build:chrome",
     "test": "jest",
     "test:watch": "jest --watch"
   },
