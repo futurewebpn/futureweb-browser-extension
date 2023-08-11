@@ -8,6 +8,7 @@
 - Part of the app is modified to solve needed enhancements for Futureweb, so you should use the official Moco API
 - Article inserted from the Futureweb Article Database (calling Futureweb API)
 - Showing Available hours (calling official Moco Browser Extension API)
+- Versioning Info: last 3 digits is Moco Version, split up. 0.4.240 becomes Moco 2.4.0
 
 ### Development
 
