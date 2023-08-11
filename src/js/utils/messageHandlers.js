@@ -98,7 +98,7 @@ export async function openPopup(tab, { service }) {
           apiClient.projects(),
           apiClient.activities(fromDate, toDate),
           apiClient.schedules(fromDate, toDate),
-          apiClient.availhours(get("[0].data.user_last_project_id", responses) || get("[0].data.user_last_project_id", responses))
+          apiClient.availhours(get("[0].data.last_project_id", responses) || get("[0].data.user_last_project_id", responses))
         ])),
       )
     }
