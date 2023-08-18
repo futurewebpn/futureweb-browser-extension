@@ -65,7 +65,7 @@ function clickHandler(event) {
         closeOverlay();
       });
       const iframe = document.createElement("iframe");
-      iframe.src = "https://dashboard.fweb.at/pages/article/add/" + project_id + "?hash=" + settings.apiKey;
+      iframe.src = "https://dashboard.fweb.at/mocopages/article/add/" + project_id + "?hash=" + settings.apiKey;
       iframe.style.width = "100%";
       iframe.style.height = "100%";
       iframe.style.border = "none";
