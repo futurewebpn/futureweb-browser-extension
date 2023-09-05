@@ -1,7 +1,7 @@
 {
   "name": "futureweb-extension",
   "description": "Browsererweiterung für Futureweb V2",
-  "version": "0.4.240",
+  "version": "0.5.240",
   "license": "MIT",
   "browserslist": [
     "defaults",

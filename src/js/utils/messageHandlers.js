@@ -12,6 +12,7 @@ import { createMatcher } from "utils/urlMatcher"
 import remoteServices from "remoteServices"
 import { sendMessage, onMessage } from "webext-bridge/background"
 import { queryTabs, isBrowserTab, getSettings, setStorage } from "utils/browser"
+import { getProjectId } from '../fw/fw_functions';
 
 let matcher
 const initMatcher = (settings) => {
@@ -98,9 +99,10 @@ export async function openPopup(tab, { service }) {
           apiClient.projects(),
           apiClient.activities(fromDate, toDate),
           apiClient.schedules(fromDate, toDate),
-          apiClient.availhours(get("[0].data.last_project_id", responses) || get("[0].data.user_last_project_id", responses))
         ])),
       )
+      // Get available hours for project an do checking if project still available (not archived)
+      responses.push(await apiClient.availhours(getProjectId(responses)))
     }
 
     const settingTimeTrackingHHMM = get("[0].data.setting_time_tracking_hh_mm", responses)
